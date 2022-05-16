@@ -16,26 +16,26 @@ const Example: FC = () => {
     <div id="example">
       <ConnectButton />
       {account && (
-        <>
-          <button onClick={() => signMessage({ message: 'gm' })}>
-            Sign Message
-          </button>
-          <div className="field">
-            <div className="label">url</div>
-            <div className="value">
-              <a href={window.location.href}>{window.location.href}</a>
-            </div>
-          </div>{' '}
-          <div className="field">
-            <div className="label">address</div>
-            <div className="value">{account?.address || '–'}</div>
-          </div>
-          <div className="field">
-            <div className="label">signed message</div>
-            <div className="value">{signedMessage || '–'}</div>
-          </div>
-        </>
+        <button onClick={() => signMessage({ message: 'gm' })}>
+          Sign Message
+        </button>
       )}
+      <div className="fields">
+        <div className="field">
+          <div className="label">url</div>
+          <div className="value">
+            <a href={window.location.href}>{window.location.href}</a>
+          </div>
+        </div>
+        <div className="field">
+          <div className="label">address</div>
+          <div className="value">{account?.address || '–'}</div>
+        </div>
+        <div className="field">
+          <div className="label">signed message</div>
+          <div className="value">{signedMessage || '–'}</div>
+        </div>
+      </div>
     </div>
   );
 };

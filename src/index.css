@@ -13,7 +13,11 @@ html, body, #root, #root > div {
 }
 
 button {
-  margin: 2rem auto;
+  margin-top: 2rem;
+}
+
+.fields {
+  margin-top: 2rem;
 }
 
 .field {
