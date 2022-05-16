@@ -1,10 +1,16 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAccount, useSignMessage } from 'wagmi';
 
 const Example: FC = () => {
   const { data: account } = useAccount();
-  const { data: signedMessage, signMessage } = useSignMessage();
+  const { data: signedMessage, signMessage, reset } = useSignMessage();
+
+  useEffect(() => {
+    if (!account) {
+      reset();
+    }
+  }, [account, reset]);
 
   return (
     <div id="example">
