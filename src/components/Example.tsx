@@ -16,7 +16,9 @@ const Example: FC = () => {
           </button>
           <div className="field">
             <div className="label">url</div>
-            <div className="value">{window.location.href}</div>
+            <div className="value">
+              <a href={window.location.href}>{window.location.href}</a>
+            </div>
           </div>{' '}
           <div className="field">
             <div className="label">address</div>
