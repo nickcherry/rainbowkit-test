@@ -15,6 +15,10 @@ const Example: FC = () => {
             Sign Message
           </button>
           <div className="field">
+            <div className="label">url</div>
+            <div className="value">{window.location.href}</div>
+          </div>{' '}
+          <div className="field">
             <div className="label">address</div>
             <div className="value">{account?.address || '–'}</div>
           </div>
