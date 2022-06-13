@@ -1,21 +1,18 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { Example } from './Example';
 
-import {
-  apiProvider,
-  configureChains,
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import React, { FC } from 'react';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
+import { infuraProvider } from 'wagmi/providers/infura';
+import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    apiProvider.infura(process.env.REACT_APP_ALCHEMY_API_KEY),
-    apiProvider.fallback(),
+    infuraProvider({ infuraId: process.env.REACT_APP_INFURA_ID }),
+    publicProvider(),
   ],
 );
 
@@ -32,11 +29,11 @@ const wagmiClient = createClient({
 
 const App: FC = () => {
   return (
-    <WagmiProvider client={wagmiClient}>
+    <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Example />
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 
